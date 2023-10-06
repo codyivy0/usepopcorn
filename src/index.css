@@ -49,6 +49,8 @@ body {
   justify-content: center;
 }
 
+
+
 .box {
   width: 42rem;
   max-width: 42rem;
@@ -340,6 +342,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 500px) {
+  body{
+    width: fit-content;
+    padding: 0;
+  }
+  .main {
+    flex-direction: column;
+    height: 100vh;
+    
+  }
+  .box {
+    flex: 1;
+  }
+  .logo h1 {
+    display: none;
+  }
+  .search {
+    width: auto;
+  }
 }
 
 /*
