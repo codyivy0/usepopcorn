@@ -57,6 +57,9 @@ body {
   overflow: auto;
   position: relative;
 }
+.box::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
 
 .loader {
   text-align: center;
