@@ -8,15 +8,15 @@ const KEY = "9d9bc84";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
- 
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-//  const [watched, setWatched] = useState([]);
-  const [watched, setWatched] = useState(()=> {
-    const storedvalue = localStorage.getItem('watched')
-    return JSON.parse(storedvalue) || []
+  //  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(() => {
+    const storedvalue = localStorage.getItem("watched");
+    return JSON.parse(storedvalue) || [];
   });
   function handleSelectMovie(id) {
     setSelectedId((prevId) => (prevId !== id ? id : null));
@@ -34,9 +34,9 @@ export default function App() {
     setWatched((prev) => prev.filter((movie) => movie.imdbID !== id));
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem("watched", JSON.stringify(watched));
-  }, [watched])
+  }, [watched]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -255,7 +255,7 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     async function getMovieDetails() {
       setIsLoading(true);
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+        `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
       );
       const data = await res.json();
       setMovie(data);
@@ -392,7 +392,9 @@ function WatchedMovie({ movie, onDeleteWatched, onSelectMovie }) {
   return (
     <li>
       <img src={movie.poster} alt={`${movie.title} poster`} />
-      <h3 id="watchedTitle" onClick={()=>onSelectMovie(movie.imdbID)}>{movie.title}</h3>
+      <h3 id="watchedTitle" onClick={() => onSelectMovie(movie.imdbID)}>
+        {movie.title}
+      </h3>
       <div>
         <p>
           <span>⭐️</span>
