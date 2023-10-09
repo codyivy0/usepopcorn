@@ -149,6 +149,9 @@ body {
 .list-watched {
   height: calc(100% - 9rem);
 }
+#watchedTitle {
+  cursor: pointer;
+}
 
 .list li {
   position: relative;
